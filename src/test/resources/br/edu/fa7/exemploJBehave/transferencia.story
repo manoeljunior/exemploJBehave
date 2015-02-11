@@ -1,7 +1,7 @@
 Operações Financeiras
 
-Scenario: Efetuar o saque em uma conta
-Given uma conta com saldo 1000
-When efetuar um saque de 100
-Then o saldo da conta será 900
+Cenário: Efetuar o saque em uma conta
+Dado que uma conta com saldo 1000
+Quando efetuar um saque de 100
+Então o saldo da cont será 901
 		

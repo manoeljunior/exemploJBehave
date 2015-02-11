@@ -1,7 +1,6 @@
 package br.edu.fa7.exemploJBehave.steps;
 
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.junit.Assert;

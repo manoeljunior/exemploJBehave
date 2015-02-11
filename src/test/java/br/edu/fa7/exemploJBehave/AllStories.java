@@ -12,9 +12,11 @@ import org.jbehave.core.i18n.LocalizedKeywords;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
+import org.jbehave.core.parsers.RegexStoryParser;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
+import org.jbehave.core.steps.MarkUnmatchedStepsAsPending;
 
 import br.edu.fa7.exemploJBehave.steps.StepDef;
 import static org.jbehave.core.reporters.Format.CONSOLE;
@@ -24,10 +26,13 @@ public class AllStories extends JUnitStories{
 	@Override
 	public Configuration configuration() {
 
-		Keywords keywords=new LocalizedKeywords(locale());
+		Keywords keywords = new LocalizedKeywords(locale());
 		
-		return new MostUsefulConfiguration().useStoryLoader(new LoadFromClasspath(this.getClass()))
-				//.useKeywords(keywords)
+		return new MostUsefulConfiguration()
+				.useKeywords(keywords)
+				//.useStepCollector(new MarkUnmatchedStepsAsPending(keywords))
+				.useStoryParser(new RegexStoryParser(keywords))
+				.useStoryLoader(new LoadFromClasspath(this.getClass()))
 				.useStoryReporterBuilder(new StoryReporterBuilder()
 				.withDefaultFormats()
 				.withFormats(CONSOLE));
